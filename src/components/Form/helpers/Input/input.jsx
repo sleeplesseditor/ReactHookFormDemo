@@ -10,10 +10,12 @@ const Input = ({
     name,
     onChange,
     placeholder,
+    register,
     required,
-    value
+    type
+    // value
 }) => (
-    <Fragment>
+    <div className="input-container">
         {label != null && <label className="input-label" htmlFor={name}>{required ? `${label} *` : label}</label>}
         <input 
             className={`${(errorMessage != null && errorType)} ${className}`}
@@ -22,10 +24,11 @@ const Input = ({
             name={name}
             onChange={onChange}
             placeholder={placeholder}
-            value={value}
+            // ref={register}
+            type={type}
         />
-        {errorMessage !== null && <p className="input-error-message">{errorMessage}</p> }
-    </Fragment>
+        {errorMessage !== null && <p className="input-error-message">{errorMessage}</p>}
+    </div>
 )
 
 export default Input

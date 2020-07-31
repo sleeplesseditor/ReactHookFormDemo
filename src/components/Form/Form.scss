@@ -11,9 +11,21 @@
         margin-top: 1rem;
         border-radius: 5%;
         border: none;
+        float: right;
+        width: 33%;
 
         &:hover {
             background-color: rgb(255, 5, 5);
         }
+
+        &-container {
+            width: 100%;
+        }
+    }
+
+    &-row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
     }
 }

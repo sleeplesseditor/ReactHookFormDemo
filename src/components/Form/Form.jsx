@@ -1,25 +1,43 @@
 import React from 'react';
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import Input from './helpers/Input/input';
-import * as errorMessageSchema from './validation/validator';
+import { yupResolver } from '@hookform/resolvers';
+import errorMessageSchema from './validation/validator';
 import './Form.scss';
 
 export default function Form() {
     const { register, handleSubmit, errors } = useForm({
-        validationSchema: errorMessageSchema
+        resolver: yupResolver(errorMessageSchema)
     });
     const onSubmit = data => console.log(data);
-  
+    
+    console.log('ERROR', errors)
+
     return (
       <form className="demo-form" onSubmit={handleSubmit(onSubmit)}>
-        <Input 
-            className="demo-form-input"
-            required
-            label="Name"
-            ref={register}
-            errorMessage={errors.errorMessage.name}
-        />
-        <button className="demo-form-btn" type="submit">Submit</button>
+        <div className="demo-form-row">
+            <Input 
+                className="demo-form-input"
+                required
+                label="Name"
+                name="name"
+                type="text"
+                register={register}
+                errorMessage={errors.mainSection?.name?.message}
+            />
+            <Input 
+                className="demo-form-input"
+                required
+                label="Email"
+                name="email"
+                type="email"
+                register={register}
+                errorMessage={errors.mainSection?.email?.message}
+            />
+        </div>
+        <div className="demo-form-btn-container">
+            <input className="demo-form-btn" type="submit" />
+        </div>
       </form>
     );
 }
