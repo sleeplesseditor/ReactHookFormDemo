@@ -1,18 +1,25 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import Input from './helpers/Input/input';
+import * as errorMessageSchema from './validation/validator';
 import './Form.scss';
 
 export default function Form() {
-    const { register, handleSubmit, errors } = useForm();
+    const { register, handleSubmit, errors } = useForm({
+        validationSchema: errorMessageSchema
+    });
     const onSubmit = data => console.log(data);
   
     return (
       <form className="demo-form" onSubmit={handleSubmit(onSubmit)}>
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" ref={register({ required: true, maxLength: 30 })} />
-        {errors.name && errors.name.type === "required" && <span>This is required</span>}
-        {errors.name && errors.name.type === "maxLength" && <span>Max length exceeded</span> }
-        <input type="submit" />
+        <Input 
+            className="demo-form-input"
+            required
+            label="Name"
+            ref={register}
+            errorMessage={errors.errorMessage.name}
+        />
+        <button className="demo-form-btn" type="submit">Submit</button>
       </form>
     );
 }

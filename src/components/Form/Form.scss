@@ -1,4 +1,19 @@
 .demo-form {
     display: flex;
     flex-direction: column;
+
+    &-btn {
+        color: #fff;
+        background-color: rgb(216, 0, 0);
+        transition: all .2s ease-in-out;
+        cursor: pointer;
+        padding: 0.25rem;
+        margin-top: 1rem;
+        border-radius: 5%;
+        border: none;
+
+        &:hover {
+            background-color: rgb(255, 5, 5);
+        }
+    }
 }
