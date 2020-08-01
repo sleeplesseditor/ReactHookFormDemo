@@ -1,12 +1,13 @@
 import React from 'react';
 import { useForm, Controller } from "react-hook-form";
 import Input from './helpers/Input/input';
+import DatePicker from './helpers/DatePicker/datepicker';
 import { yupResolver } from '@hookform/resolvers';
 import errorMessageSchema from './validation/validator';
 import './Form.scss';
 
 export default function Form() {
-    const { register, handleSubmit, errors } = useForm({
+    const { register, handleSubmit, control, errors } = useForm({
         resolver: yupResolver(errorMessageSchema)
     });
     const onSubmit = data => console.log(data);
@@ -16,23 +17,58 @@ export default function Form() {
     return (
       <form className="demo-form" onSubmit={handleSubmit(onSubmit)}>
         <div className="demo-form-row">
-            <Input 
-                className="demo-form-input"
-                required
-                label="Name"
-                name="name"
-                type="text"
-                register={register}
-                errorMessage={errors.mainSection?.name?.message}
+            <Controller
+              control={control}
+              name="mainSection.name"
+              register={register}
+              render={props => (
+                <Input 
+                    className="demo-form-input"
+                    required
+                    label="Name"
+                    placeholder="Insert Name"
+                    name="name"
+                    type="text"
+                    onChange={e => props.onChange(e)}
+                    value={props.value}
+                    errorMessage={errors.mainSection?.name?.message}
+                />
+              )}
             />
-            <Input 
-                className="demo-form-input"
-                required
-                label="Email"
-                name="email"
-                type="email"
-                register={register}
-                errorMessage={errors.mainSection?.email?.message}
+            <Controller
+              control={control}
+              name="mainSection.email"
+              register={register}
+              render={props => (
+                <Input 
+                    className="demo-form-input"
+                    required
+                    label="Email"
+                    placeholder="Insert Email Address"
+                    type="email"
+                    onChange={e => props.onChange(e)}
+                    value={props.value}
+                    errorMessage={errors.mainSection?.email?.message}
+                />
+              )}
+            />
+            <Controller
+              control={control}
+              name="mainSection.dateOfBirth"
+              register={register}
+              render={props => (
+                <DatePicker
+                    className="demo-form-datepicker"
+                    label="Date of Birth"
+                    placeholder="Insert Date of Birth"
+                    onChange={e => props.onChange(e)}
+                    value={props.value}
+                    type="date"
+                    isClearable
+                    required
+                    errorMessage={errors.mainSection?.dateOfBirth?.message}
+                />
+              )}
             />
         </div>
         <div className="demo-form-btn-container">

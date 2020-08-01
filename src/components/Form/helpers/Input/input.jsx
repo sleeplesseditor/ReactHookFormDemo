@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import './input.scss';
 
 const Input = ({
@@ -18,7 +18,7 @@ const Input = ({
     <div className="input-container">
         {label != null && <label className="input-label" htmlFor={name}>{required ? `${label} *` : label}</label>}
         <input 
-            className={`${(errorMessage != null && errorType)} ${className}`}
+            className={errorMessage !== null ? errorMessage && (`${className} error-display`) : className}
             disabled={disabled}
             key={name}
             name={name}
@@ -27,7 +27,7 @@ const Input = ({
             // ref={register}
             type={type}
         />
-        {errorMessage !== null && <p className="input-error-message">{errorMessage}</p>}
+        {errorMessage !== null && (<p className="input-error-message">{errorMessage}</p>)}
     </div>
 )
 
