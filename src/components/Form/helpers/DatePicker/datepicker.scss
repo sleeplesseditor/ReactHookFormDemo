@@ -6,12 +6,6 @@
         margin: 1rem;
     }
 
-    &-error-display {
-        input {
-            border: 1px solid red;
-        }
-    }
-
     &-error-message {
         font-size: 0.75em;
         color: red;
@@ -27,4 +21,8 @@
 
 .react-datepicker__close-icon {
     padding-bottom: 1.65rem !important;
+}
+
+.error-display {
+    border: 1px solid red;
 }

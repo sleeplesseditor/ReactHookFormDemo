@@ -45,7 +45,7 @@ useEffect(() => {
 					onClick={props.onClick}
 					name={name}
 					placeholder={placeholder}
-					className={`${(errorMessage != null && errorType)} ${className}`}
+					className={errorMessage !== null ? errorMessage && (`${className} error-display`) : className}
 					readOnly
 					customBorder={customBorder}
 					errorMessage={errorMessage}
