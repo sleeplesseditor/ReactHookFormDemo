@@ -1,0 +1,3 @@
+const literatureGenres = [
+    { 'Horror': Horror }
+]

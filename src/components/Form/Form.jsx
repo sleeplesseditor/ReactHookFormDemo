@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm, Controller } from "react-hook-form";
 import Input from './helpers/Input/input';
 import DatePicker from './helpers/DatePicker/datepicker';
+import DropDown from './helpers/DropDown/dropdown';
 import { yupResolver } from '@hookform/resolvers';
 import errorMessageSchema from './validation/validator';
 import './Form.scss';
@@ -67,6 +68,23 @@ export default function Form() {
                     isClearable
                     required
                     errorMessage={errors.mainSection?.dateOfBirth?.message}
+                />
+              )}
+            />
+            <Controller
+              control={control}
+              name="mainSection.interests"
+              register={register}
+              render={props => (
+                <DropDown
+                    className="demo-form-dropdown"
+                    label="Interests"
+                    onChange={e => props.onChange(e)}
+                    value={props.value}
+                    // type="date"
+                    // isClearable
+                    required
+                    errorMessage={errors.mainSection?.interests?.message}
                 />
               )}
             />

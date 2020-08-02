@@ -2,7 +2,6 @@
     &-component {
         display: flex;
         flex-direction: column;
-        justify-content: center;
         margin: 1rem;
     }
 
@@ -13,7 +12,7 @@
     }
 
     &-label {
-        font-size: 1rem;
+        font-size: 0.75rem;
         font-family: sans-serif;
         color: rgb(109, 109, 109);
     }

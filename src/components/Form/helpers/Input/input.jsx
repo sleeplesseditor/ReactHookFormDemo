@@ -13,7 +13,6 @@ const Input = ({
     register,
     required,
     type
-    // value
 }) => (
     <div className="input-container">
         {label != null && <label className="input-label" htmlFor={name}>{required ? `${label} *` : label}</label>}
@@ -24,11 +23,10 @@ const Input = ({
             name={name}
             onChange={onChange}
             placeholder={placeholder}
-            // ref={register}
             type={type}
         />
         {errorMessage !== null && (<p className="input-error-message">{errorMessage}</p>)}
     </div>
 )
 
-export default Input
+export default Input;
